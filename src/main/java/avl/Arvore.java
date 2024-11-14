@@ -3,6 +3,8 @@ package avl;
 public class Arvore<T extends Comparable<T>> {
 
     private No<T> raiz;
+    
+    private int tamanho;
 
     public No<T> getRaiz() {
         return raiz;
@@ -10,6 +12,7 @@ public class Arvore<T extends Comparable<T>> {
 
     public void inserir(T valor) {
         raiz = inserir(raiz, valor);
+        tamanho++;
     }
 
     private No<T> inserir(No<T> no, T valor) {
@@ -125,4 +128,31 @@ public class Arvore<T extends Comparable<T>> {
             exibirEmOrdem(no.getDireita());
         }
     }
+
+	public int getTamanho() {
+		return tamanho;
+	}
+	
+	public T buscar(T valor) {
+        return buscar(raiz, valor);
+    }
+
+    private T buscar(No<T> no, T valor) {
+        if (no == null) {
+            return null;
+        }
+
+        if (valor.compareTo(no.getValor()) == 0) {
+            return no.getValor();
+        }
+
+        if (valor.compareTo(no.getValor()) < 0) {
+            return buscar(no.getEsquerda(), valor);
+        } 
+
+        else {
+            return buscar(no.getDireita(), valor);
+        }
+    }
+
 }
