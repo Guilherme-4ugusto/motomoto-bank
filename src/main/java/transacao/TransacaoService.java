@@ -1,6 +1,5 @@
 package transacao;
 
-import conta.Conta;
 import enums.TipoTransacao;
 
 import java.math.BigDecimal;
